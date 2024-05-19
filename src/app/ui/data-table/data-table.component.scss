@@ -1,0 +1,73 @@
+.container {
+  margin: 3px;
+
+  table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px black;
+    border-collapse: collapse;
+  }
+
+  th:first-child {
+    width: 30%;
+    text-align: start;
+  }
+
+  td:first-child {
+    text-align: start;
+  }
+
+  tr {
+    border-bottom: 1px solid #b4adad;
+  }
+
+  th,td {
+    text-align: center;
+    padding: 15px 15px;
+  }
+
+  div {
+    border-radius: 8px;
+  }
+
+  span {
+    padding: 5px;
+    border-radius: 5px;
+  }
+}
+
+.mat-toolbar.mat-primary {
+  background: #3f51b5;
+  color: white;
+  justify-content: end;
+}
+
+.mat-list-item .mat-icon {
+  color: red;
+  margin-right: 5px;
+}
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.mat-drawer-container {
+  border-radius: 5px;
+}
+
+mat-sidenav {
+  width: 210px !important;
+}
+
+mat-sidenav-container {
+  min-height: 300px;
+}
+
+mat-select {
+  border: 1px solid #3f51b5;
+  border-radius: 5px;
+  margin-left: 15px;
+  height: 20px;
+  width: 90%;
+}

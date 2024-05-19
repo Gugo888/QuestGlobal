@@ -1,0 +1,60 @@
+<mat-sidenav-container>
+  <mat-toolbar color="primary">
+      <mat-icon (click)="toggleBurgerMenu()">menu</mat-icon>
+  </mat-toolbar>
+
+  <mat-sidenav #sidenav mode="side" [opened]="showBurgerMenu" fixedInViewport="false" position="end">
+    <mat-nav-list>
+      <mat-list-item>
+          <mat-icon style="color: black" (click)="openAddSymbol()">add_circle_outline</mat-icon>
+          <span>Add Symbol</span>
+      </mat-list-item>
+      <mat-select *ngIf="showAddSymbolSelect" [(ngModel)]="selectedSymbol" (selectionChange)="toggleSymbolVisibility(selectedSymbol)">
+        <mat-option *ngFor="let symbol of availableSymbols" [value]="symbol">{{ symbol }}</mat-option>
+      </mat-select>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let symbol of unavailableSymbols">
+          <mat-icon (click)="toggleSymbolVisibility(symbol); selectedSymbol = ''">remove_circle_outline</mat-icon>
+          <span>{{ symbol }}</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="container">
+    <table>
+      <tr>
+        <th>Symbol</th>
+        <th>Last</th>
+        <th>Bid</th>
+        <th>Ask</th>
+        <th>Chg $</th>
+        <th>Chg %</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Vol</th>
+      </tr>
+    
+      <tr *ngFor="let item of items$ | async; trackBy: trackById">
+        <td>{{ item.symbol }}</td>
+        <td>{{ item.last }}</td>
+        <td [style.color]="item.bidColor.color">
+          <span [style.background-color]="item.bidColor.backgroundColor">{{ item.bid }}</span>
+        </td>
+        <td [style.color]="item.askColor.color">
+          <span [style.background-color]="item.askColor.backgroundColor">{{ item.ask }}</span>
+        </td>
+        <td [style.color]="item.chgCurrencyRandomSymbol.color">
+          {{ item.chgCurrencyRandomSymbol.symbol }} {{ item.chgCurrency }}
+        </td>
+        <td [style.color]="item.chgPercentRandomSymbol.color">
+          {{ item.chgPercentRandomSymbol.symbol }} {{ item.chgPercent }}&nbsp;%
+        </td>
+        <td>{{ item.hight }}</td>
+        <td>{{ item.low }}</td>
+        <td>{{ item.vol }}&nbsp;K</td>
+      </tr>
+    </table>
+  </div>
+
+</mat-sidenav-container>
