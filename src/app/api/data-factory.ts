@@ -18,7 +18,6 @@ const getRandomSymbolColor = () => {
 };
 
 export class DataItem {
-[x: string]: any;
   last: string;
   bid: string;
   bidColor: any;
